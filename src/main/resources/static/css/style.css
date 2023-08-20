@@ -1,0 +1,49 @@
+body{
+    padding: 0;
+}
+
+.navbar_sticky{
+    position: sticky;
+    top: 0;
+    left: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+#target{
+    position: sticky;
+    top: 0;
+    left: 0;
+    transition: background-color 1s ease;
+}
+
+ul{
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.search{
+    border-radius: 5px;
+    border-color: rgba(33, 33, 33,0.2);
+    border-width: 0.1px;
+}
+
+.banner{
+    background-image: url(https://i.ibb.co/1bN8pcL/FITSPORT-BANNER.png); 
+    height: 29vw; 
+    background-size: contain; 
+}
+
+.nav_top{
+    z-index: 2;
+    position: absolute;
+    
+}

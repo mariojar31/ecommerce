@@ -16,21 +16,71 @@
 
   <!-- Custom styles for this template -->
   <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <div th:include="admin/template_admin.html::header"></div>
+  <header>
 
-    <!-- Page Content -->
+    <ul class="nav nav_top justify-content-center my-0" style="background-color: rgba(230, 179, 27,0.3); width: 60vw; margin-left: 20vw; border-bottom-left-radius: 10vw; border-bottom-right-radius: 10vw;">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#" style="color: antiquewhite;">Link1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: antiquewhite;">Link2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: antiquewhite;">Link3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-disabled="true" style="color: antiquewhite;">Link4</a>
+      </li>
+    </ul>
+
+    <div class="bg-light rounded-3">
+        <div class=" container-fluid p-2" style="background-color: rgb(230, 179, 27) ;background:url(https://i.ibb.co/1bN8pcL/FITSPORT-BANNER.png); height: 29vw; background-size: contain; background-repeat: no-repeat;">
+        </div>
+      </div>
+      
+  </header>
+  <main>
+    <nav class="navbar_sticky d-flex" id="target" style="background-color: rgb(230, 179, 27);">
+        <h2 id="nav_text">SportFit</h2>
+        <ul class="d-flex justify-content-center">
+          <li class="nav-item dropdown"><a
+            class="nav-link dropdown-toggle" href="#"
+            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> ADMIN </a>
+            <div class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" th:href="@{/productos}">Productos</a> 
+              <a class="dropdown-item" href="#">Ordenes</a> 
+              <a class="dropdown-item" href="#">Usuarios</a> 
+              <a class="dropdown-item" href="#">Salir</a>
+            </div></li>
+            
+            <li class="px-4">
+              <form action="" method="get">
+                <input type="search" name="search" class="search" id="search" placeholder="Buscar...">
+                <button type="submit" class="btn btn-outline-light btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg></button>
+              </form>
+            </li>
+        </ul>
+    </nav>
+
+
+
     <div class="container">
 
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
-        <p class="lead">Tu tienda de productos en Línea</p>
+        <h1 class="display-3">SportFit Store</h1>
+        <p class="lead">Tu tienda de productos para el mundo del deporte y el fitnest en Línea</p>
       </header>
 
       <!-- Page Features -->
@@ -43,7 +93,7 @@
               <p class="card-text">Nombre del producto.</p>
             </div>
             <div class="card-footer">
-              <a href="productohome.html" class="btn btn-success">Ver producto</a>
+              <a href="productohome.html" class="btn btn-warning">Ver producto</a>
             </div>
           </div>
         </div>
@@ -55,7 +105,7 @@
               <p class="card-text">Nombre del producto.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-success">Ver producto</a>
+              <a href="#" class="btn btn-warning">Ver producto</a>
             </div>
           </div>
         </div>
@@ -67,7 +117,7 @@
               <p class="card-text">Nombre del producto.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-success">Ver producto</a>
+              <a href="#" class="btn btn-warning">Ver producto</a>
             </div>
           </div>
         </div>
@@ -78,23 +128,29 @@
               <p class="card-text">Nombre del producto.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-success">Ver producto</a>
+              <a href="#" class="btn btn-warning">Ver producto</a>
             </div>
           </div>
         </div>
 
       </div>
       <!-- /.row -->
+    </div>
 
+  </main>
+
+  <footer class="py-5" style="background-color: rgb(230, 179, 27);">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; SportFit Store 2023</p>
     </div>
     <!-- /.container -->
-
-    <!-- Footer -->
-    <div th:include="admin/template_admin.html::footer"></div>
+  </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
     <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/script.js}"></script>
+
 
   </body>
 
