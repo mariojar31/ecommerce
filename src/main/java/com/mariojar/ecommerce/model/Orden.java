@@ -1,13 +1,32 @@
 package com.mariojar.ecommerce.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ordenes")
 public class Orden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String numero;
     private Date fechaCreacion;
     private Date fechaRecibida;
     private double total;
+
+    @ManyToOne 
+    private User usuario;
+
+    @OneToMany(mappedBy = "orden")
+    private List<DetalleOrden> detalle;
 
     public Orden() {
     }
@@ -51,6 +70,19 @@ public class Orden {
     public void setTotal(double total) {
         this.total = total;
     }
+    public User getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+        public List<DetalleOrden> getDetalle() {
+        return detalle;
+    }
+    public void setDetalle(List<DetalleOrden> detalle) {
+        this.detalle = detalle;
+    }
+
 
 
     @Override
@@ -58,6 +90,8 @@ public class Orden {
         return "orden [id=" + id + ", numero=" + numero + ", fechaCreacion=" + fechaCreacion + ", fechaRecibida="
                 + fechaRecibida + ", total=" + total + "]";
     }
+
+
 
     
 }
