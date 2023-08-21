@@ -43,6 +43,12 @@ public class ProductoController {
         return "productos/create";
     }
 
+    // @GetMapping("/")
+    // public String home(){
+    //     return "usuario/home";
+    // }
+
+
     @PostMapping("/save")
     public String save(Producto producto,@RequestParam("img") MultipartFile file) throws IOException{
         LOGGER.info("Este es el objeto producto {}",producto);
