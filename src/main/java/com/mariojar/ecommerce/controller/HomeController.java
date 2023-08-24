@@ -65,6 +65,9 @@ public class HomeController {
 
         Optional<Producto> optionalProducto = productoService.get(id);
 
+        List<DetalleOrden> ordenNueva=new ArrayList<DetalleOrden>();
+
+
         log.info("Producto añadido: {}", optionalProducto.get());
         log.info("cantidad: {}", cantidad);
 
@@ -77,7 +80,27 @@ public class HomeController {
         detalleOrden.setProducto(producto);
         detalleOrden.setId(id);
 
-        detalles.add(detalleOrden);
+        //Verificar si el producto ya se ha añadido al carrito
+
+        Integer idProducto=producto.getId();
+        boolean añadido=detalles.stream().anyMatch(p->p.getId()==idProducto);
+
+
+        if(!añadido){
+             detalles.add(detalleOrden);
+        }else{
+
+            for(DetalleOrden ordenparacomparar: detalles){
+                if(ordenparacomparar.getId()==idProducto){
+                    ordenparacomparar.setCantidad(ordenparacomparar.getCantidad()+detalleOrden.getCantidad());
+                } 
+                ordenNueva.add(ordenparacomparar);
+            }
+            detalles=ordenNueva;  
+        }
+       
+
+       
 
         sumaTotal=detalles.stream().mapToDouble(dt->dt.getTotal()).sum();
 
@@ -107,6 +130,14 @@ public class HomeController {
         sumaTotal=detalles.stream().mapToDouble(dt->dt.getTotal()).sum();
 
         orden.setTotal(sumaTotal);
+        model.addAttribute("cart",detalles);
+        model.addAttribute("orden", orden);
+
+        return "usuario/carrito";
+    }
+
+    @GetMapping("/getCart")
+    public String getCart(Model model){
         model.addAttribute("cart",detalles);
         model.addAttribute("orden", orden);
 
