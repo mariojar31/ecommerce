@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+  <title>SportFit Store</title>
 
 
   <!-- Bootstrap core CSS -->
@@ -35,7 +35,7 @@
     </h1>
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a style="color: rgb(107, 107, 107);" th:href="@{/}">Home</a></li>
       <li class="breadcrumb-item active">Producto</li>
     </ol>
 
@@ -49,7 +49,8 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <form action="carrito.html" method="POST">
+            <form th:action="@{/cart}" method="POST">
+              <input type="hidden" th:value="${producto.id}" name="id">
               <h2 th:text="${producto.nombre}" style="text-align: center;" class="card-title"></h2>
 
               <ul class="list-group">
