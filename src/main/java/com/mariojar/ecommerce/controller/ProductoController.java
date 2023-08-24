@@ -43,10 +43,6 @@ public class ProductoController {
         return "productos/create";
     }
 
-    // @GetMapping("/")
-    // public String home(){
-    //     return "usuario/home";
-    // }
 
 
     @PostMapping("/save")

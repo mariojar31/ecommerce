@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+  <title>SportFit Store</title>
 
 
   <!-- Bootstrap core CSS -->
@@ -90,7 +90,7 @@
               <p th:text="${producto.nombre}" class="card-text"></p>
             </div>
             <div class="card-footer">
-              <a href="productohome.html" class="btn btn-warning">Ver producto</a>
+              <a th:href="@{/productohome/{id} (id=${producto.id})}" class="btn btn-warning">Ver producto</a>
             </div>
           </div>
         </div>
