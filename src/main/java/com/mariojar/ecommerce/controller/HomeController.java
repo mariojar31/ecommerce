@@ -1,6 +1,7 @@
 package com.mariojar.ecommerce.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,8 @@ import com.mariojar.ecommerce.model.DetalleOrden;
 import com.mariojar.ecommerce.model.Orden;
 import com.mariojar.ecommerce.model.Producto;
 import com.mariojar.ecommerce.model.User;
+import com.mariojar.ecommerce.service.IDetalleOrdenService;
+import com.mariojar.ecommerce.service.IOrdenService;
 import com.mariojar.ecommerce.service.IUsuarioService;
 import com.mariojar.ecommerce.service.ProductoService;
 
@@ -34,6 +37,12 @@ public class HomeController {
 
     @Autowired
     private IUsuarioService usuarioService;
+
+    @Autowired
+    private IOrdenService ordenService;
+
+    @Autowired
+    private IDetalleOrdenService detalleOrdenService;
 
     //En esta lista almacenamos los detalles de los productos
     List<DetalleOrden> detalles=new ArrayList<DetalleOrden>();
@@ -161,4 +170,29 @@ public class HomeController {
         return "usuario/resumenorden";
     }
     
+    @GetMapping("/saveOrder")
+    public String saveOrder(){
+        Date fechaCreacion=new Date();
+        orden.setFechaCreacion(fechaCreacion);
+        orden.setNumero(ordenService.generarNumeroOrden());
+
+        //asignacion a usuario
+        User usuario = usuarioService.findById(1).get();
+
+        orden.setUsuario(usuario);
+        ordenService.save(orden);
+
+        //Guardamos los detalles
+        for(DetalleOrden dt:detalles){
+            dt.setOrden(orden);
+            detalleOrdenService.save(dt);
+        }
+
+        //Limpiar y ordenar lista 
+        orden = new Orden();
+        detalles.clear();
+
+
+        return "redirect:/";
+    }
 }
