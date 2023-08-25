@@ -11,6 +11,7 @@ import com.mariojar.ecommerce.repository.IOrdenRepository;
 
 @Service
 public class OrdenServiceImpl implements IOrdenService{
+    
     @Autowired
     private IOrdenRepository ordenRepository;
 
@@ -29,11 +30,11 @@ public class OrdenServiceImpl implements IOrdenService{
         int numero=0;
         String numeroConcatenado="";
 
-        List<Orden> ordenes=findAll();
+        List<Orden> ordenes = findAll();;
 
         List<Integer> numeros = new ArrayList<Integer>();
 
-        ordenes.stream().forEach(o->numeros.add(Integer.parseInt(o.getNumero())));
+        ordenes.stream().forEach(o -> numeros.add(Integer.parseInt(o.getNumero())));
 
         if(ordenes.isEmpty()){
             numero=1;
