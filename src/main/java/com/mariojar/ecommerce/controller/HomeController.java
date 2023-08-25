@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mariojar.ecommerce.model.DetalleOrden;
 import com.mariojar.ecommerce.model.Orden;
 import com.mariojar.ecommerce.model.Producto;
+import com.mariojar.ecommerce.model.User;
+import com.mariojar.ecommerce.service.IUsuarioService;
 import com.mariojar.ecommerce.service.ProductoService;
 
 
@@ -29,6 +31,9 @@ public class HomeController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private IUsuarioService usuarioService;
 
     //En esta lista almacenamos los detalles de los productos
     List<DetalleOrden> detalles=new ArrayList<DetalleOrden>();
@@ -142,6 +147,18 @@ public class HomeController {
         model.addAttribute("orden", orden);
 
         return "usuario/carrito";
+    }
+
+    @GetMapping("/order")
+    public String order(Model model){
+
+        User usuario = usuarioService.findById(1).get();
+
+        model.addAttribute("cart",detalles);
+        model.addAttribute("orden", orden);
+        model.addAttribute("usuario", usuario);
+
+        return "usuario/resumenorden";
     }
     
 }
