@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SportFit Store</title>
+
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+  <nav class="navbar_sticky d-flex" id="target" style="background-color: rgb(230, 179, 27);  z-index: 3;">
+    <h2 id="nav_text">SportFit</h2>
+    <ul class="d-flex px-0 justify-content-center">
+                 
+        <li class="px-4">
+          <a href="#" id="nav_text">Login <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+          </svg></a>
+        </li>
+    </ul>
+</nav>
+
+<br><br>
+
+ <!-- Page Content -->
+  <div class="container">
+
+    <div class="mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <div class="">
+              <h2>Registro</h2>
+            </div>
+        </div>
+      </div>
+    </div>
+    <form th:action="@{/save}" method="post">
+      <div class="form-group">
+        <label for="nombres">Nombres:</label> <input type="text"
+          class="form-control" id="nombre" name="nombre" required
+          placeholder="Ingrese sus nombres" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label> <input type="email"
+          class="form-control" id="email" name="email" required
+          placeholder="Ingrese su email" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección:</label> <input type="text"
+          class="form-control" id="direccion" name="direccion" required
+          placeholder="Ingrese su dirección" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="pwd">Contraseña</label> <input type="password"
+          class="form-control" id="password" name="password" required placeholder="Ingrese su contraseña" autocomplete="off">
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </div>
+    </form>
+
+  </div>
+
+  <br><br>
+  <!-- /.container -->
+
+ <!-- Footer -->
+  
+ <div th:include="usuario/template_user.html::footer"></div>
+
+
+ <!-- Bootstrap core JavaScript -->
+ <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+ <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+ <script th:src="@{/vendor/script.js}"></script>
+ 
+ 
+ </body>
+ 
+ </html>
