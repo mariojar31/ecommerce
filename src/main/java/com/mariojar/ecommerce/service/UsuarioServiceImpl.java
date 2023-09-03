@@ -27,6 +27,14 @@ public class UsuarioServiceImpl implements IUsuarioService{
         return usuarioRepository.save(usuario);
     }
 
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+
+
     
     
 }
